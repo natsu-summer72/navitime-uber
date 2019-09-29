@@ -4,21 +4,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import * as firebase from 'firebase';
 import Order from './components/order';
+import firebaseConfig from './config/firebase'
 
-/*
-var firebaseConfig = {
-  apikey: API_KEY,
-  authDomain: AuthDomain,
-  databaseURL: DatabaseURL,
-  projectId: ProjectId,
-  storageBucket: StorageBucket,
-  messagingSenderId:MessagingSenderId,
-  appId: AppId,
-  measurementId: MeasurementId
-};
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-*/
 
 export default class App extends React.Component {
   render() {
