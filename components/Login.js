@@ -2,7 +2,18 @@ import React from 'react'
 import {View, TextInput, Text, Button, StyleSheet} from 'react-native'
 
 // ユーザー登録の実装
-import { login } from '../config/firebase';
+import firebase from "firebase";
+
+const login = (email, password) => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(response => {
+            alert("Login success!");
+            this.props.navigation.navigate('Order')
+        })
+        .catch(error => {
+            alert(error);
+        });
+}
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -10,13 +21,21 @@ export default class Login extends React.Component {
         this.state = {
             email: '',
             password: '',
+            uid: '',
         };
     }
 
 
     Login = () => {
         const { email, password } = this.state;
-        login(email, password);
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(response => {
+                alert("Login success!");
+                this.props.navigation.navigate('Order', {uid: response.user.uid})
+            })
+            .catch(error => {
+                alert(error);
+            });
     }
 
     render() {
@@ -45,7 +64,9 @@ export default class Login extends React.Component {
                 <View style={{paddingTop: 32}}>
                     <Button
                         title="送信"
-                        onPress={() => this.Login()} // 認証を実行
+                        onPress={() => {
+                            this.Login();
+                        }}
                     />
                 </View>
             </View>
