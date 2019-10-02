@@ -8,7 +8,7 @@ const login = (email, password) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(response => {
             alert("Login success!");
-            this.props.navigation.navigate('Order')
+            this.props.navigation.navigate('AfterLogin')
         })
         .catch(error => {
             alert(error);
