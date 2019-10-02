@@ -9,7 +9,7 @@ import 'firebase/firestore';
 export default class Order extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {shop_name: '', shop_address: '', order: ''};
+        this.state = {shop_name: null,  order: null, uid: props.navigation.state.params.uid};
     }
 
     render() {
@@ -34,7 +34,16 @@ export default class Order extends React.Component {
                         value={order}/>
                 </View>
                 <Button backgroundColor="#00bfff" title="注文送信" style={{flex:1, justifyContent: 'center'}}
-                        onPress = {() => orderRef.add({'shop-name': this.state.shop_name, 'order': this.state.order, datetime: datetime,'uid': '0'}) }
+                        onPress ={() => {
+                            orderRef.add({
+                                shop_name: this.state.shop_name,
+                                order: this.state.order,
+                                datetime: datetime,
+                                uid: this.state.uid,
+                                status: 'Waiting',
+                            });
+                            this.setState({shop_name:null, order:null});
+                        }}
                 />
             </View>
         );
