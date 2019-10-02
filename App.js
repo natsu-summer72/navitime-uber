@@ -1,12 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+// import { API_KEY, AuthDomain, DatabaseURL, ProjectId, StorageBucket, MessagingSenderId, AppId, MeasurementId } from 'react-native-dotenv'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+import * as firebase from 'firebase';
+import Order from './components/order';
+import firebaseConfig from './config/firebase'
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+export default class App extends React.Component {
+  render() {
+    return (
+            <Order/>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
