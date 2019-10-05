@@ -60,7 +60,6 @@ export default class Login extends React.Component {
                         placeholderTextColor="#777"
                     />
                 </View>
-
                 <View style={{paddingTop: 32}}>
                     <Button
                         title="送信"
@@ -74,6 +73,27 @@ export default class Login extends React.Component {
     }
 }
 
+
+/*
+本番用
+                <View style={{paddingTop: 32}}>
+                    <Button
+                        title="送信"
+                        onPress={() => {
+                            this.Login();
+                        }}
+                    />
+                </View>
+テスト用
+                <View style={{paddingTop: 32}}>
+                    <Button
+                        title="送信"
+                        onPress={() => {
+                            this.props.navigation.navigate('AfterLogin');
+                        }}
+                    />
+                </View>
+ */
 
 const styles = StyleSheet.create({
     container: {

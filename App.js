@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-// import { API_KEY, AuthDomain, DatabaseURL, ProjectId, StorageBucket, MessagingSenderId, AppId, MeasurementId } from 'react-native-dotenv'
+import { StatusBar, Text, View } from 'react-native';
 
 import * as firebase from 'firebase';
 import { createStackNavigator } from "react-navigation-stack";
@@ -8,11 +7,15 @@ import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
 import Order from './components/order';
+import ShopList from "./components/ShopList";
 import Login from './components/Login';
 import firebaseConfig from './config/firebase'
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+
+
 
 class Home extends React.Component {
     render() {
@@ -37,11 +40,9 @@ class MyPage extends React.Component {
 
 const TabNavigator = createBottomTabNavigator({
     Home: Home,
-    Order: Order,
+    Order: ShopList,
     MyPage: MyPage,
-
-})
-
+},{initialRouteName:'Home'})
 
 const RootStack = createStackNavigator(
     {
@@ -59,6 +60,10 @@ const AppContainer = createAppContainer(RootStack)
 
 export default class App extends React.Component {
   render() {
-    return <AppContainer/>;
+    return (
+        <View style={{flex:1, marginTop: StatusBar.currentHeight}}>
+            <AppContainer/>
+        </View>
+    )
   }
 }
