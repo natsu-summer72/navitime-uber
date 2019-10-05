@@ -9,7 +9,7 @@ import 'firebase/firestore';
 export default class Order extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {shop_name: null,  order: null, uid: props.navigation.state.params.uid};
+        this.state = {shop_name: this.props.navigation.state.params.shop_name,  order: null, uid: props.navigation.state.params.uid};
     }
 
     render() {
@@ -23,11 +23,7 @@ export default class Order extends React.Component {
             <View style={styles.container}>
                 <Text style={{fontSize: 30, flex:1, justifyContent:'center'}}>注文</Text>
                 <View style={{flex:5}}>
-                    <FormLabel>店名</FormLabel>
-                    <FormInput
-                        onChangeText={shop_name => this.setState({shop_name})}
-                        value={shop_name}/>
-
+                    <Text>{this.state.shop_name}</Text>
                     <FormLabel>オーダー</FormLabel>
                     <FormInput
                         onChangeText={order => this.setState({order})}

@@ -36,6 +36,7 @@ export default class ShopList extends React.Component {
                     title={this.state.list[i]}
                     titleStyle={{fontSize:20}}
                     contentContainerStyle={{ height: 70 }}
+                    onPress={()=>this.props.navigation.navigate('Order', {shop_name:this.state.list[i]})}
                 />
             )
         }

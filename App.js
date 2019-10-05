@@ -6,7 +6,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
-import Order from './components/order';
+import Order from './components/Order';
 import ShopList from "./components/ShopList";
 import Login from './components/Login';
 import firebaseConfig from './config/firebase'
@@ -40,14 +40,21 @@ class MyPage extends React.Component {
 
 const TabNavigator = createBottomTabNavigator({
     Home: Home,
-    Order: ShopList,
+    ShopList: ShopList,
     MyPage: MyPage,
 },{initialRouteName:'Home'})
+
+const OrderNavigator = createStackNavigator(
+    {
+        Order: Order
+    }
+);
 
 const RootStack = createStackNavigator(
     {
         Login: Login,
         AfterLogin: TabNavigator,
+        Order: OrderNavigator,
     },
     {
         mode: 'modal',

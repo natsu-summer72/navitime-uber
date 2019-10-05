@@ -4,16 +4,6 @@ import {View, TextInput, Text, Button, StyleSheet} from 'react-native'
 // ユーザー登録の実装
 import firebase from "firebase";
 
-const login = (email, password) => {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(response => {
-            alert("Login success!");
-            this.props.navigation.navigate('AfterLogin')
-        })
-        .catch(error => {
-            alert(error);
-        });
-}
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -31,7 +21,7 @@ export default class Login extends React.Component {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(response => {
                 alert("Login success!");
-                this.props.navigation.navigate('Order', {uid: response.user.uid})
+                this.props.navigation.navigate('AfterLogin', {uid: response.user.uid})
             })
             .catch(error => {
                 alert(error);
@@ -50,7 +40,6 @@ export default class Login extends React.Component {
                         placeholderTextColor="#777"
                     />
                 </View>
-
                 <View>
                     <Text>パスワード</Text>
                     <TextInput
