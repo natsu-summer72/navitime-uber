@@ -4,16 +4,6 @@ import {View, TextInput, Text, Button, StyleSheet} from 'react-native'
 // ユーザー登録の実装
 import firebase from "firebase";
 
-const login = (email, password) => {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(response => {
-            alert("Login success!");
-            this.props.navigation.navigate('AfterLogin')
-        })
-        .catch(error => {
-            alert(error);
-        });
-}
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -31,7 +21,7 @@ export default class Login extends React.Component {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(response => {
                 alert("Login success!");
-                this.props.navigation.navigate('Order', {uid: response.user.uid})
+                this.props.navigation.navigate('AfterLogin', {uid: response.user.uid})
             })
             .catch(error => {
                 alert(error);
@@ -50,7 +40,6 @@ export default class Login extends React.Component {
                         placeholderTextColor="#777"
                     />
                 </View>
-
                 <View>
                     <Text>パスワード</Text>
                     <TextInput
@@ -60,7 +49,6 @@ export default class Login extends React.Component {
                         placeholderTextColor="#777"
                     />
                 </View>
-
                 <View style={{paddingTop: 32}}>
                     <Button
                         title="送信"
@@ -74,6 +62,27 @@ export default class Login extends React.Component {
     }
 }
 
+
+/*
+本番用
+                <View style={{paddingTop: 32}}>
+                    <Button
+                        title="送信"
+                        onPress={() => {
+                            this.Login();
+                        }}
+                    />
+                </View>
+テスト用
+                <View style={{paddingTop: 32}}>
+                    <Button
+                        title="送信"
+                        onPress={() => {
+                            this.props.navigation.navigate('AfterLogin');
+                        }}
+                    />
+                </View>
+ */
 
 const styles = StyleSheet.create({
     container: {
