@@ -7,19 +7,19 @@ import firebase from "firebase";
 export default class ShopList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {'list': NaN}
+        this.state = {shop_list: [], user_info: props.navigation.state.params.user_info}
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let ShopRef = firebase.firestore().collection("shops");
-        let buff = []
+        let shops = [];
         ShopRef.get().then((query) => {
             query.forEach((doc) => {
-                buff.push(doc.id);
+                let data = doc.data();
+                shops.push({name:data.name, brand_id:data.brand_id, address:data.address, geopoint:data.geopoint});
             });
-            console.log(buff);
-            this.setState({'list':buff})
-            console.log("rendering...")
+            console.log(shops);
+            this.setState({shop_list:shops});
         }).catch((error)=>{
                 console.log(`データの取得に失敗しました (${error})`);
         });
@@ -27,14 +27,15 @@ export default class ShopList extends React.Component {
 
     render() {
         let list = []
-        for (let i=0, len=this.state.list.length; i<len; i++){
+        for (let i=0, len=this.state.shop_list.length; i<len; i++){
             list.push(
                 <Card
-                    title={this.state.list[i]}
+                    key={i}
+                    title={this.state.shop_list[i].name}
                     image={require('../img/fast_food.jpg')}>
                     <Button
                         color={'#00BB00'}
-                        onPress={()=>this.props.navigation.navigate('Order', {shop_name:this.state.list[i]})}
+                        onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
                         title='注文する' />
                 </Card>
 

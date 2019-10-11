@@ -42,11 +42,15 @@ const TabNavigator = createBottomTabNavigator({
     Home: Home,
     ShopList: ShopList,
     MyPage: MyPage,
-},{initialRouteName:'Home'})
+},{initialRouteName:'ShopList'})
 
 const OrderNavigator = createStackNavigator(
     {
         Order: Order
+    },
+    {
+        mode: 'modal',
+        headerMode:'none',
     }
 );
 
