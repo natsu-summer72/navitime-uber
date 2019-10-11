@@ -101,6 +101,8 @@ export default class Order extends React.Component {
                                     user_info:{address:user_info.address, email: this.state.user_info.email, geopoint:user_info.geopoint,
                                                 name: this.state.user_info.name, phoneNumber: this.state.user_info.phoneNumber, uid: this.state.user_info.uid},
                                 });
+
+                                await this.props.navigation.navigate('OrderComp', {order:items, shop_info: this.state.shop_info})
                             }}
                     />
                 </View>
