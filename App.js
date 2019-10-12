@@ -6,6 +6,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
+import OrderComp from "./components/OrderComp";
 import Order from './components/Order';
 import ShopList from "./components/ShopList";
 import Login from './components/Login';
@@ -54,11 +55,22 @@ const OrderNavigator = createStackNavigator(
     }
 );
 
+const OrderCompNavigator = createStackNavigator(
+    {
+        OrderComp: OrderComp
+    },
+    {
+        mode: 'modal',
+        headerMode: 'none'
+    }
+);
+
 const RootStack = createStackNavigator(
     {
         Login: Login,
         AfterLogin: TabNavigator,
         Order: OrderNavigator,
+        OrderComp: OrderCompNavigator,
     },
     {
         mode: 'modal',

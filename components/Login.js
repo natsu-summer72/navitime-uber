@@ -31,7 +31,8 @@ export default class Login extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <View>
+                <Text style={{fontSize:24, textAlign:'center'}}>ログイン</Text>
+                <View style={{paddingLeft:20, paddingRight:20}}>
                     <Text>メールアドレス</Text>
                     <TextInput
                         onChangeText={(email) => this.setState({email})}
@@ -40,7 +41,7 @@ export default class Login extends React.Component {
                         placeholderTextColor="#777"
                     />
                 </View>
-                <View>
+                <View style={{paddingLeft:20, paddingRight:20}}>
                     <Text>パスワード</Text>
                     <TextInput
                         onChangeText={(password) => this.setState({password})}
