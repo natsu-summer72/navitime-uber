@@ -2,6 +2,7 @@ import React from 'react';
 import { View, ScrollView, Button } from 'react-native';
 import { Card, Header } from 'react-native-elements';
 import firebase from "firebase";
+import UserList from "./UserList";
 
 
 export default class ShopList extends React.Component {
@@ -18,7 +19,6 @@ export default class ShopList extends React.Component {
                 let data = doc.data();
                 shops.push({name:data.name, brand_id:data.brand_id, address:data.address, geopoint:data.geopoint});
             });
-            console.log(shops);
             this.setState({shop_list:shops});
         }).catch((error)=>{
                 console.log(`データの取得に失敗しました (${error})`);
@@ -45,6 +45,7 @@ export default class ShopList extends React.Component {
         return (
             <View style={{backgroundColor:'#EEEEEE'}}>
                 <Header
+                    leftComponent={{ icon: 'menu', color: '#fff', onPress: ()=>{this.props.navigation.navigate('UserList')} }}
                     centerComponent={{ text: 'Shop List', style: { color: '#fff' , fontSize: 20} }}
                 />
                 <ScrollView style={{backgroundColor:'#EEEEEE', marginBottom:80}}>
