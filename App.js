@@ -11,22 +11,10 @@ import Order from './components/Order';
 import ShopList from "./components/ShopList";
 import Login from './components/Login';
 import firebaseConfig from './config/firebase'
+import UserList from "./components/UserList";
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-
-
-
-class Home extends React.Component {
-    render() {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text>Home!</Text>
-            </View>
-        );
-    }
-}
 
 
 class MyPage extends React.Component {
@@ -40,7 +28,6 @@ class MyPage extends React.Component {
 }
 
 const TabNavigator = createBottomTabNavigator({
-    Home: Home,
     ShopList: ShopList,
     MyPage: MyPage,
 },{initialRouteName:'ShopList'})
@@ -67,7 +54,8 @@ const OrderCompNavigator = createStackNavigator(
 
 const RootStack = createStackNavigator(
     {
-        Login: Login,
+        UserList: UserList,
+        //Login: Login,
         AfterLogin: TabNavigator,
         Order: OrderNavigator,
         OrderComp: OrderCompNavigator,
@@ -75,7 +63,7 @@ const RootStack = createStackNavigator(
     {
         mode: 'modal',
         headerMode:'none',
-        initialRouteName: 'Login',
+        initialRouteName: 'UserList',
     }
 );
 

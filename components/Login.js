@@ -50,7 +50,7 @@ export default class Login extends React.Component {
                         placeholderTextColor="#777"
                     />
                 </View>
-                <View style={{paddingTop: 32}}>
+                <View style={{paddingTop: 20, paddingLeft:40, paddingRight:40}}>
                     <Button
                         title="送信"
                         onPress={() => {
@@ -88,13 +88,8 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#EEEEEE',
         // alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 20,
-        marginRight: 20,
-        marginTop: 50,
-        marginBottom: 50
-
     }
 });
