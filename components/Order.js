@@ -75,8 +75,7 @@ export default class Order extends React.Component {
                     <Button backgroundColor="#00bfff" title="注文送信"
                             onPress ={async () => {
                                 let orderRef = firebase.firestore().collection("orders");
-                                let moment = await require('moment');
-                                let datetime = await moment().format("YYYY年MM月DD日 HH:mm:ssZ")
+                                let datetime = await firebase.firestore.Timestamp.now()
 
                                 let items = [];
                                 for (let i=0; i<this.state.items.length; i++){
