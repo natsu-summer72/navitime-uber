@@ -96,7 +96,7 @@ export default class Order extends React.Component {
                                     });
 
                                     await orderRef.add({
-                                        crated_at: datetime,
+                                        created_at: datetime,
                                         items:items,
                                         shop:this.state.shop_info,
                                         status:0,
