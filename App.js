@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Text, View } from 'react-native';
+import { StatusBar, Text, View, Platform } from 'react-native';
 
 import * as firebase from 'firebase';
 import { createStackNavigator } from "react-navigation-stack";
@@ -10,27 +10,50 @@ import OrderComp from "./components/OrderComp";
 import Order from './components/Order';
 import ShopList from "./components/ShopList";
 import Login from './components/Login';
+import MyPage from './components/MyPage';
+import UserEdit from './components/UserEdit';
 import firebaseConfig from './config/firebase'
 import UserList from "./components/UserList";
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight;
 
-class MyPage extends React.Component {
-    render() {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text>MyPage!</Text>
-            </View>
-        );
-    }
+function StatusBarPlaceHolder() {
+    return (
+        <View style={{
+            width: "100%",
+            height: STATUS_BAR_HEIGHT,
+            backgroundColor: '#3D6DCC'
+        }}>
+            <StatusBar
+                barStyle="light-content"
+            />
+        </View>
+    );
 }
+
+
+const MyPageNavigator = createStackNavigator(
+    {
+        MyPage: MyPage,
+        Edit: UserEdit
+    },
+    {
+        mode: 'push',
+        headerMode:'none',
+        initialRouteName:'MyPage',
+    }
+    );
+
 
 const TabNavigator = createBottomTabNavigator({
     ShopList: ShopList,
-    MyPage: MyPage,
-},{initialRouteName:'ShopList'})
+    MyPage: MyPageNavigator,
+    },
+    {initialRouteName:'ShopList'}
+    );
 
 const OrderNavigator = createStackNavigator(
     {
@@ -72,7 +95,8 @@ const AppContainer = createAppContainer(RootStack)
 export default class App extends React.Component {
   render() {
     return (
-        <View style={{flex:1, marginTop: StatusBar.currentHeight}}>
+        <View style={{flex:1}}>
+            <StatusBarPlaceHolder/>
             <AppContainer/>
         </View>
     )
