@@ -28,18 +28,114 @@ export default class ShopList extends React.Component {
     render() {
         let list = []
         for (let i=0, len=this.state.shop_list.length; i<len; i++){
-            list.push(
-                <Card
-                    key={i}
-                    title={this.state.shop_list[i].name}
-                    image={require('../img/fast_food.jpg')}>
-                    <Button
-                        color={'#00BB00'}
-                        onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
-                        title='注文する' />
-                </Card>
+            let brand_id = this.state.shop_list[i].brand_id
 
-            )
+            // require の引数には変数が使えないため、if文
+            if (brand_id === 'マクドナルド'){
+                list.push(
+                    <Card
+                        key={i}
+                        title={this.state.shop_list[i].name}
+                        image={require('../img/fast_food.jpg')}>
+                        <Button
+                            color={'#00BB00'}
+                            onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
+                            title='注文する' />
+                    </Card>
+                );
+
+            }
+            if (brand_id === 'ドミノピザ'){
+                list.push(
+                    <Card
+                        key={i}
+                        title={this.state.shop_list[i].name}
+                        image={require('../img/pizza.jpg')}>
+                        <Button
+                            color={'#00BB00'}
+                            onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
+                            title='注文する' />
+                    </Card>
+                );
+            }
+            if (brand_id === 'ガスト'){
+                list.push(
+                    <Card
+                        key={i}
+                        title={this.state.shop_list[i].name}
+                        image={require('../img/restaurant.jpg')}>
+                        <Button
+                            color={'#00BB00'}
+                            onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
+                            title='注文する' />
+                    </Card>
+                );
+            }
+            if (brand_id === '松屋' || brand_id === 'すき家'){
+                list.push(
+                    <Card
+                        key={i}
+                        title={this.state.shop_list[i].name}
+                        image={require('../img/gyudon.jpg')}>
+                        <Button
+                            color={'#00BB00'}
+                            onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
+                            title='注文する' />
+                    </Card>
+                );
+            }
+            if (brand_id === 'おむすび権兵衛'){
+                list.push(
+                    <Card
+                        key={i}
+                        title={this.state.shop_list[i].name}
+                        image={require('../img/omusubi.jpg')}>
+                        <Button
+                            color={'#00BB00'}
+                            onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
+                            title='注文する' />
+                    </Card>
+                );
+            }
+            if (brand_id === 'スターバックス'){
+                list.push(
+                    <Card
+                        key={i}
+                        title={this.state.shop_list[i].name}
+                        image={require('../img/starbacks.jpg')}>
+                        <Button
+                            color={'#00BB00'}
+                            onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
+                            title='注文する' />
+                    </Card>
+                );
+            }
+            if (brand_id === '餃子の王将'){
+                list.push(
+                    <Card
+                        key={i}
+                        title={this.state.shop_list[i].name}
+                        image={require('../img/gyoza.jpg')}>
+                        <Button
+                            color={'#00BB00'}
+                            onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
+                            title='注文する' />
+                    </Card>
+                );
+            }
+            if (brand_id === 'ミスタードーナツ'){
+                list.push(
+                    <Card
+                        key={i}
+                        title={this.state.shop_list[i].name}
+                        image={require('../img/donut.jpg')}>
+                        <Button
+                            color={'#00BB00'}
+                            onPress= {() => this.props.navigation.navigate('Order', {shop_info:this.state.shop_list[i], user_info:this.state.user_info})}
+                            title='注文する' />
+                    </Card>
+                );
+            }
         }
 
         return (
