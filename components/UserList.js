@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, ScrollView} from 'react-native';
 import firebase from 'firebase';
-import {Header, Button} from "react-native-elements";
+import {Header, Button, Icon} from "react-native-elements";
 
 import { logout } from "../config/firebase";
 import { emails, password } from "../config/firebase";
@@ -31,8 +31,16 @@ export default class UserList extends React.Component {
         let list = [];
         for (let i=0, len=user_list.length; i<len; i++){
             list.push(
-                <View style={{padding:5}}>
-                    <Button onPress={() => login_as_X(i)} title={user_list[i]} />
+                <View key={i} style={{padding:5, flexDirection:'row', justifyContent:'center'}}>
+                    <View style={{flex:10}}>
+                        <Button
+                            raised
+                            onPress={() => login_as_X(i)}
+                            title={user_list[i]}
+                            backgroundColor={'#ff8c00'}
+                            leftIcon={{name: 'account-box', size: 30}}
+                            title={user_list[i]} />
+                    </View>
                 </View>
             )
         }
