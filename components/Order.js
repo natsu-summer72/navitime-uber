@@ -35,7 +35,7 @@ export default class Order extends React.Component {
                 {
                     this.state.items.map((m,j) => {
                         return (
-                                <Card key={j}>
+                                <Card>
                                     <View style={{flexDirection:'row'}}>
                                         <Text style={{flex:2, textAlign:'center'}}>
                                             {m}
@@ -64,14 +64,18 @@ export default class Order extends React.Component {
         );
 
         return (
-            <View style={{backgroundColor: '#EEEEEE'}}>
-                <Header
-                    centerComponent={{ text: this.state.shop_info.name, style: { color: '#fff' , fontSize: 20} }}
-                />
-                <ScrollView style={{backgroundColor:'#EEEEEE'}}>
-                    {list}
-                </ScrollView>
-                <View style={{marginTop:20, marginBottom:20}}>
+            <View style={{backgroundColor: '#EEEEEE', flex:1, flexDirection:'column'}}>
+                <View>
+                    <Header
+                        centerComponent={{ text: this.state.shop_info.name, style: { color: '#fff' , fontSize: 20} }}
+                    />
+                </View>
+                <View style={{flex:1, paddingBottom:100}}>
+                    <ScrollView style={{backgroundColor:'#EEEEEE'}}>
+                        {list}
+                    </ScrollView>
+                </View>
+                <View style={{backgroundColor: '#EEEEEE',flex:1, position: 'absolute', bottom:50, left:0, right:0, justifyContent:'center'}}>
                     <Button backgroundColor="#00bfff" title="注文送信"
                             onPress ={async () => {
                                 let orderRef = firebase.firestore().collection("orders");
