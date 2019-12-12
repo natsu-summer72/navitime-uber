@@ -18,6 +18,7 @@ import UserList from "./components/UserList";
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+//const STATUS_BAR_HEIGHT = StatusBar.currentHeight;
 const STATUS_BAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight;
 
 function StatusBarPlaceHolder() {
@@ -77,8 +78,8 @@ const OrderCompNavigator = createStackNavigator(
 
 const RootStack = createStackNavigator(
     {
-        UserList: UserList,
-        //Login: Login,
+        //UserList: UserList,
+        Login: Login,
         AfterLogin: TabNavigator,
         Order: OrderNavigator,
         OrderComp: OrderCompNavigator,
@@ -86,7 +87,8 @@ const RootStack = createStackNavigator(
     {
         mode: 'modal',
         headerMode:'none',
-        initialRouteName: 'UserList',
+        //initialRouteName: 'UserList',
+        initialRouteName: 'Login',
     }
 );
 
