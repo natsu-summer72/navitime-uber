@@ -31,10 +31,13 @@ export default class Login extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={{fontSize:24, textAlign:'center'}}>ログイン</Text>
-                <View style={{paddingLeft:20, paddingRight:20}}>
-                    <Text>メールアドレス</Text>
+                <View style={{marginBottom:40}}>
+		    <Text style={{fontSize:40, textAlign:'center'}}>ログイン</Text>
+		</View>
+                <View style={{paddingLeft:20, paddingRight:20, marginBottom: 20}}>
+                    <Text style={{fontSize:20}}>メールアドレス</Text>
                     <TextInput
+			style={{fontSize:20}}
                         onChangeText={(email) => this.setState({email})}
                         value={this.state.email}
                         placeholder="メールアドレスを入力してください"
@@ -42,8 +45,9 @@ export default class Login extends React.Component {
                     />
                 </View>
                 <View style={{paddingLeft:20, paddingRight:20}}>
-                    <Text>パスワード</Text>
+                    <Text style={{fontSize:20}}>パスワード</Text>
                     <TextInput
+			style={{fontSize:20}}
                         onChangeText={(password) => this.setState({password})}
                         value={this.state.password}
                         placeholder="パスワードを入力してください"
